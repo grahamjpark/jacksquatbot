@@ -8,6 +8,12 @@ var TABLE = '4dogs';
 
 var PLAYER = 0;
 var DEALER = 1;
+var playerCards = [];
+var dealerCards = [];
+
+playerCards.push("AC");
+playerCards.push("AS");
+
 // Create Table
   request.post({url: ENDPOINT + 'tables/' + TABLE,
              form: {username: MYUSER, password: MYPASS, command: 'create'}},
@@ -30,8 +36,6 @@ request.post({url: ENDPOINT + 'tables/' + TABLE,
              function(err,httpResponse,body) {
   console.log(body);
 });
-
-
 
 // Place Bet
 //if (num_aces(my_hand) == 0) {
@@ -152,19 +156,43 @@ function leave() {
 function numCard(card, hand) {
   var count = 0;
   //if hand 0 then player
-    //if playerhand.contains(card)
-        //count++;
-  //else {
+  if(hand == PLAYER){
+    for(var x = 0; x < playerCards.length; x++){
+      if(playerCards[x].indexOf(card) > -1){
+      count++;  
+     }
+    }
+  }
+  else {
+      for(var x = 0; x < dealerCards.length; x++){
+        if(playerCards[x].indexOf(card) > -1){
 
-    //}
+        count++;  
+      }
+    }
+
+  }
    return count; 
 }
 
 function get_amount(hand){
   var count = 0;
+  if(hand == PLAYER){
+      for(var x = 0; x < playerCards.length; x++){
+        count++;  
+     
+    }
+  }
+  else {
+      for(var x = 0; x < dealerCards.length; x++){
+        count++;  
+      
+    }
 
-  return count;
+  }
+   return count; 
 }
+
 
 function bet(){
   request.post({url: ENDPOINT + 'tables/' + TABLE,
