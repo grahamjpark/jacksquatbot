@@ -10,7 +10,7 @@ var TABLE = 'dogs';
 request.post({url: ENDPOINT + 'tables/' + TABLE,
              form: {username: MYUSER, password: MYPASS, command: 'create'}},
              function(err,httpResponse,body) {
-  console.log(body);
+  console.log("Created: " + body);
 });
 
 // Start Table
@@ -29,13 +29,6 @@ request.post({url: ENDPOINT + 'tables/' + TABLE,
   console.log(body);
 });
 
-// Leave Table
-
-request.post({url: ENDPOINT + 'tables/' + TABLE,
-             form: {username: MYUSER, password: MYPASS, command: 'leave'}},
-             function(err,httpResponse,body) {
-  console.log(body);
-});
 
 // Place Bet
 
@@ -60,3 +53,13 @@ request.post({url: ENDPOINT + 'tables/' + TABLE,
              function(err,httpResponse,body) {
   console.log(body);
 });
+
+
+function leave() {
+  // Leave Table
+  request.post({url: ENDPOINT + 'tables/' + TABLE,
+              form: {username: MYUSER, password: MYPASS, command: 'leave'}},
+              function(err,httpResponse,body) {
+    console.log(body);
+  });
+}
