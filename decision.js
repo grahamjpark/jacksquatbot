@@ -50,31 +50,29 @@ public int select_action() {
 			return 3; //Stand if you have 17-21
 	} 
 	//Soft hand
-	else {
-		if ((numcard('A', 0) == 1 && numcard('2', 0)) || 
-			(numcard('A', 0) == 1 && numcard('3', 0))) {
+	else if (numcard('A', 0) == 1) {
+		if (numcard('2', 0) || numcard('3', 0)) {
 			if (get_amount(dealer_hand) >= 5 && get_amount(dealer_hand) <= 6) {
 				return 2; //double
 			}
 			else
 				return 1;
 		}
-		else if ((numcard('A', 0) == 1 && numcard('4', 0)) || 
-			(numcard('A', 0) == 1 && numcard('5', 0))) {
+		else if (numcard('4', 0) || numcard('5', 0)) {
 			if (get_amount(dealer_hand) >= 4 && get_amount(dealer_hand) <= 6) {
 				return 2; //double
 			}
 			else
 				return 1;
 		}
-		else if (numcard('A', 0) == 1 && numcard('6', 0)) {
+		else if (numcard('6', 0)) {
 			if (get_amount(dealer_hand) >= 3 && get_amount(dealer_hand) <= 6) {
 				return 2; //double
 			}
 			else
 				return 1;
 		}
-		else if (numcard('A', 0) == 1 && numcard('7', 0)) {
+		else if (numcard('7', 0)) {
 			if (get_amount(dealer_hand) == 2 || get_amount(dealer_hand) == 7 || get_amount(dealer_hand) == 8) {
 				return 3; //stand
 			}
@@ -84,10 +82,10 @@ public int select_action() {
 			else
 				return 1;
 		}
-		else if (numcard('A', 0) == 1 && numcard('8', 0)) {
+		else if (numcard('8', 0)) {
 			return 3;
 		}
-		else if (numcard('A', 0) == 1 && numcard('9', 0)) {
+		else if (numcard('9', 0)) {
 			return 3;
 		}
 	}
